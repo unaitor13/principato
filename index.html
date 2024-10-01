@@ -4,6 +4,45 @@
   <meta charset="utf-8" />
   <title>Principato Italian Cuisine</title>
   <link href="css/style.css" rel="stylesheet" />
+  <script>
+
+    function gestorEventos(){
+
+      var imagen = document.getElementById(image);
+
+      image.onclick= function(){
+        alert("Bienvenido a la cocina italiana");
+      }
+
+      var username = document.getElementById("user");
+
+      user.value = "tu@email"
+
+      user.onfocus = function(){
+        username.value= "";
+      }
+
+      user.onblur = function(){
+        if(username.value == ""){
+          username.value = "tu@email";
+        }
+      }
+
+      var combobox = document.getElementById("combobox");
+
+      combobox.onchange = function(){
+        var index = combobox.selectedIndex;
+        var value = combobox.options[index].value;
+        console.log("Has seleccionado la receta: " + value);
+      }
+
+    }
+
+    window.onload = gestorEventos;
+
+  </script>
+
+
 </head>
 <body>
 <div class="container">
