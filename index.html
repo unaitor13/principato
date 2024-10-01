@@ -12,6 +12,7 @@
 
       image.onclick= function(){
         alert("Bienvenido a la cocina italiana");
+        clearInterval(changeImage);
       }
 
       var username = document.getElementById("user");
@@ -28,13 +29,45 @@
         }
       }
 
-      var combobox = document.getElementById("combobox");
+      var combo = document.getElementById("combobox");
 
-      combobox.onchange = function(){
-        var index = combobox.selectedIndex;
-        var value = combobox.options[index].value;
-        console.log("Has seleccionado la receta: " + value);
+      combo.addEventListener("change", function(event){
+
+        var target = event.target;
+        var opcion = target.options[target.selectedIndex];
+        console.log("Has seleccionado la receta: " + opcion.text);
+
+      });
+
+      var formulario = document.getElementById("form");
+
+      form.onsubmit = function(){
+
+        var user = document.getElementById("user").value;
+        var pass = document.getElementById("pass").value;
+
+        console.log("Usuario: " + user + " Contraseña: " + pass);
       }
+
+      let images = ["images/fresa.jpg", "images/limon.jpg", "images/mandarinas.jpg", "images/manzanas.jpg", "images/melon.jpg", "images/sesamo.jpg"];
+      let index = 0;
+
+      function carrusel(){
+
+        var imagenes = document.getElementById("image");
+
+        imagenes.style.backgroundImage = "url(" + images[index] + ")";
+        index++;
+
+        if(index == images.length){
+          index = 0;
+        }
+
+      }
+
+      let changeImage = setInterval(carrusel, 3000);
+      
+
 
     }
 
